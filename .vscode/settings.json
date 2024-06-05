@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+		"so_long.h": "c",
+		"unistd.h": "c",
+		"stdio.h": "c",
+		"fcntl.h": "c",
+		"mlx.h": "c",
+		"__locale": "cpp",
+		"__string": "cpp",
+		"string": "cpp",
+		"string_view": "cpp",
+		"so_long_bonus.h": "c",
+		"get_next_line_bonus.h": "c",
+		"stdlib.h": "c"
+	}
+}
