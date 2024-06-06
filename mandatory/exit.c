@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:45:15 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/04 07:14:54 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:21:54 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,17 @@ void	ft_free(char **map, int map_size)
 
 // error exit in case of invalid map 
 //flag is to decide wether to free the map or not
-void	ft_error(char **map, int map_size, int flag, char *err_mess)
+void	ft_error(char **map, int map_size, int flag)
 {
 	int	i;
 
 	i = 0;
-	if (flag == 1 || flag == 2)
+	if (flag == 1)
 	{
 		while (i < map_size)
 			free(map[i++]);
 		free(map);
-		if (flag == 2)
-			ft_putstr(err_mess);
 	}
-	if (flag == 0 || flag == 1)
-		write(1, "Error\nInvalid map.\n", 18);
+	write(1, "Error\nInvalid map.\n", 18);
 	exit(1);
 }

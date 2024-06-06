@@ -6,22 +6,16 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:47 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/05 22:48:12 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:33:08 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void f(void)
-{
-	system("leaks so_long_bonus");
-}
-
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 
-	atexit(f);
 	ft_zero(&data);
 	data.map_size = check_input(argc, argv[1]);
 	get_map(argv[1], data.map_size, &data);

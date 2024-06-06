@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:31 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/05 22:46:47 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:33:07 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,22 @@ void	check_path(char **map, t_data *data)
 	int		i;
 
 	dup_map = malloc(sizeof(char *) * data->map_size);
+	if (!dup_map)
+	{
+		ft_free(data->map, data->map_size);
+		ft_putstr("Error\nmalloc fail.\n");
+		exit(1);
+	}
 	data->map_w = length(map[0], 0, 0);
 	i = 0;
 	while (i < data->map_size)
 	{
 		dup_map[i] = ft_s_d(map[i], 0, 0, 1);
+		if (!dup_map[i])
+		{
+			ft_free(dup_map, i);
+			ft_error(NULL, 0, 0);
+		}
 		i++;
 	}
 	flood_fill(dup_map, data, data->p_x / 60, data->p_y / 60);
@@ -62,7 +73,6 @@ void	check_flood_fill(char **dup_map, t_data *data)
 			{
 				ft_free(data->map, data->map_size);
 				ft_free(dup_map, data->map_size);
-				data->map = NULL;
 				ft_putstr("Error\nInvalid path.\n");
 				exit(1);
 			}

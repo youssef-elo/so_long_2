@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 19:19:25 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/03 21:42:20 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:50:08 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	up_down(int keycode, t_data *d)
 		draw_map(d);
 		d->moves++;
 		d->last = d->p;
+		move_enemy(d);
 	}
 	if (keycode == DOWN && d->map[(d->p_y / 60) + 1][d->p_x / 60] != '1')
 	{
@@ -54,6 +55,7 @@ void	up_down(int keycode, t_data *d)
 		draw_map(d);
 		d->moves++;
 		d->last = d->p;
+		move_enemy(d);
 	}
 }
 
@@ -69,6 +71,7 @@ void	right_left(int k, t_data *d)
 		draw_map(d);
 		d->moves++;
 		d->last = d->r;
+		move_enemy(d);
 	}
 	if (k == LEFT && d->map[d->p_y / 60][(d->p_x / 60) - 1] != '1')
 	{
@@ -80,6 +83,7 @@ void	right_left(int k, t_data *d)
 		draw_map(d);
 		d->moves++;
 		d->last = d->l;
+		move_enemy(d);
 	}
 }
 

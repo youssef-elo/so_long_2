@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:48:28 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/04 07:14:25 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:53:51 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct s_data
 
 # define ESC 53
 
-char	*ft_strchr(const char *s, int c);
+char	*ft_strchr(char *s, int c);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_putstr(char *s);
-void	ft_error(char **map, int map_size, int flag, char *err_mess);
+void	ft_error(char **map, int map_size, int flag);
 int		length(char *s, int *pce, int flag);
 void	check_map(char **map, int line_count);
 void	count_lines(int *line_count, int fd);

@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:41 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/05 14:32:19 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:59:00 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	draw_map(t_data *d)
 	mlx_put_image_to_window(d->con, d->win, d->bg, 0, 0);
 	put_map(d, 0, 0, 0);
 	s = ft_itoa(d->moves);
+	if (!s)
+	{
+		ft_putstr("Error\nmalloc fail.\n");
+		ft_exit(d);
+	}
 	mlx_string_put(d->con, d->win, 0, 0, 0xff0000, s);
 	free(s);
 	mlx_put_image_to_window(d->con, d->win, d->last, d->p_x, d->p_y);
@@ -63,6 +68,9 @@ void	put_enemy(t_data *d, int *e, int j, int i)
 
 int	key(int keycode, t_data *data)
 {
+	int	moves_check;
+
+	moves_check = data->moves;
 	if (keycode == ESC)
 	{
 		ft_putstr("ESC key pressed.\n");
@@ -77,8 +85,11 @@ int	key(int keycode, t_data *data)
 	right_left(keycode, data);
 	up_down(keycode, data);
 	coin_exit(data);
-	data->cooldown /= 4;
-	move_enemy(data);
+	if (data->moves > moves_check)
+	{
+		data->cooldown /= 4;
+		move_enemy(data);
+	}
 	draw_map(data);
 	return (1);
 }

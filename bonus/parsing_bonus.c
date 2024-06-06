@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:45 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/05 22:47:33 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:33:19 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,17 @@ void	get_map(char *file, int map_size, t_data *data)
 	map = (char **)malloc(map_size * sizeof(char *));
 	if (map == NULL)
 		return ;
-	*map = get_next_line(fd);
-	while (i < map_size - 1)
+	while (i < map_size)
 	{
-		p = ft_strchr(*map, 'P');
+		map[i] = get_next_line(fd);
+		if (!map[i])
+			ft_error(map, i, 1);
+		p = ft_strchr(map[i], 'P');
 		if (p)
-			((1) && (data->p_x = (p - (*map)) * 60, data->p_y = i * 60));
-		map++;
-		*map = get_next_line(fd);
+			((1) && (data->p_x = (p - (map[i])) * 60, data->p_y = i * 60));
 		i++;
 	}
 	close(fd);
-	map -= map_size - 1;
 	check_map(map, map_size);
 	data->map = map;
 	check_path(map, data);
@@ -113,7 +112,7 @@ void	check_map(char **map, int line_count)
 		j = 0;
 		while (map[i][j] && map[i][j] != '\n')
 			if (!(ft_strchr("01PCEG", map[i][j++])))
-				ft_error(NULL, 0, 0);
+				ft_error(NULL, 0, 1);
 		j = 0;
 		if (i == 0 || i == (line_count - 1))
 		{

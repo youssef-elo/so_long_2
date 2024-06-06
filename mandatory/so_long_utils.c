@@ -6,13 +6,13 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:43:41 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/05/24 11:56:51 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:53:56 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	if (!s)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:49 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/05 22:48:34 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:59:28 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "get_next_line_bonus.h"
-# include <stdio.h>
 
 # define DOWN 125
 # define UP   126
@@ -114,6 +113,7 @@ void	dead(t_data *data);
 
 //task
 //make the player chage direction even when facing a wall DONE
-//check all mallocs !!!!
+//check all mallocs !!!! DONE
+//make maps for correction
 //push ??
 #endif
