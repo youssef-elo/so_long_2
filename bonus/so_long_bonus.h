@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:49 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/06 18:59:28 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/07 17:43:34 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ typedef struct s_data
 	t_enemy	*opp;
 	int		p_x;
 	int		p_y;
-	int		e_x;
-	int		e_y;
 	int		coins;
 	int		moves;
 	int		num_enemies;
@@ -111,9 +109,4 @@ void	put_map(t_data *d, int i, int j, int e);
 void	put_enemy(t_data *d, int *e, int j, int i);
 void	dead(t_data *data);
 
-//task
-//make the player chage direction even when facing a wall DONE
-//check all mallocs !!!! DONE
-//make maps for correction
-//push ??
 #endif

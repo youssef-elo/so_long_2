@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:41 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/06 18:59:00 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/08 00:14:55 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ int	key(int keycode, t_data *data)
 		data->last = data->p;
 	right_left(keycode, data);
 	up_down(keycode, data);
-	coin_exit(data);
 	if (data->moves > moves_check)
 	{
-		data->cooldown /= 4;
+		data->cooldown /= 9;
 		move_enemy(data);
 	}
+	coin_exit(data);
 	draw_map(data);
 	return (1);
 }
