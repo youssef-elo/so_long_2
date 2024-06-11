@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:48:32 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/08 00:12:11 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:49:18 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	move_enemy(t_data *d)
 			}
 			a++;
 		}
-		d->cooldown = 5000;
+		d->cooldown = 4000;
 		draw_map(d);
 		coin_exit(d);
 	}

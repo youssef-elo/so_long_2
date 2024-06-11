@@ -6,7 +6,7 @@
 /*   By: yel-ouaz <yel-ouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:12:45 by yel-ouaz          #+#    #+#             */
-/*   Updated: 2024/06/06 17:33:19 by yel-ouaz         ###   ########.fr       */
+/*   Updated: 2024/06/10 23:12:17 by yel-ouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_input(int argc, char *file)
 		exit(1);
 	}
 	l = ft_strlen(file);
-	if (ft_strcmp(file + l - 4, ".ber") != 0 || l <= 4)
+	if (l < 4 || ft_strcmp(file + l - 4, ".ber") != 0)
 		ft_error(NULL, 0, 0);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -59,15 +59,16 @@ void	count_lines(int *line_count, int fd)
 		if ((first_line < 3 || first_line > 42
 				|| length(line, pce, 1) != first_line) && line)
 		{
+			close(fd);
 			free(line);
 			ft_error(NULL, 0, 0);
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	if (pce[0] != 1 || pce[1] == 0 || pce[2] != 1)
 		ft_error(NULL, 0, 0);
-	close(fd);
 }
 
 // reads the map from the given file and gets the player's starting
@@ -76,28 +77,29 @@ void	get_map(char *file, int map_size, t_data *data)
 {
 	int		fd;
 	char	*p;
-	char	**map;
 	int		i;
 
-	i = 0;
-	fd = open(file, O_RDONLY);
-	map = (char **)malloc(map_size * sizeof(char *));
-	if (map == NULL)
+	((1) && (i = -1, fd = open(file, O_RDONLY)));
+	if (fd == -1)
 		return ;
-	while (i < map_size)
+	data->map = (char **)malloc(map_size * sizeof(char *));
+	if (data->map == NULL)
+		return ;
+	while (++i < map_size)
 	{
-		map[i] = get_next_line(fd);
-		if (!map[i])
-			ft_error(map, i, 1);
-		p = ft_strchr(map[i], 'P');
+		data->map[i] = get_next_line(fd);
+		if (!(data->map[i]))
+		{
+			close(fd);
+			ft_error(data->map, i, 1);
+		}
+		p = ft_strchr(data->map[i], 'P');
 		if (p)
-			((1) && (data->p_x = (p - (map[i])) * 60, data->p_y = i * 60));
-		i++;
+			(1 && (data->p_x = (p - (data->map[i])) * 60, data->p_y = i * 60));
 	}
 	close(fd);
-	check_map(map, map_size);
-	data->map = map;
-	check_path(map, data);
+	check_map(data->map, map_size);
+	check_path(data->map, data);
 }
 
 // check if the map is surronded by walls
